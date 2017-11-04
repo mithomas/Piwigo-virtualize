@@ -96,11 +96,16 @@ UPDATE '.IMAGES_TABLE.'
     }
   }
 
-  $query = '
-UPDATE '.CATEGORIES_TABLE.'
-  SET dir = NULL
-;';
-  pwg_query($query);
+# edit by mthomas: do not updates category to virtual to allow future syncs
+# (important is that the images are virtualized)
+#
+# todo: make an option for that and open a pull request
+#
+#  $query = '
+#UPDATE '.CATEGORIES_TABLE.'
+#  SET dir = NULL
+#;';
+#  pwg_query($query);
 
   array_push($page['infos'], l10n('Information data registered in database'));
 }
